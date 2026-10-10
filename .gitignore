@@ -1,0 +1,11 @@
+# Dependências do Node.js
+node_modules/
+
+# Relatórios gerados pelo Playwright
+playwright-report/
+
+# Resultados temporários dos testes
+test-results/
+
+# Arquivos de ambiente
+.env
