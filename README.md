@@ -21,7 +21,7 @@ Foram validados cenários relacionados a:
 - cálculo do valor restante para frete grátis;
 - limite máximo de unidades por produto;
 - validações pela interface e pela API;
-- comportamento de arredondamento conforme as limitações dos dados fornecidos.
+- análise da regra de arredondamento, considerando as limitações dos dados fornecidos.
 
 ## 🧪 Cenários de teste
 
@@ -39,6 +39,7 @@ Resultado dos testes manuais e exploratórios:
 - **17 cenários aprovados (PASS)**
 - **3 cenários reprovados (FAIL)**
 - **2 bugs identificados**
+- **1 critério não testável com os dados fornecidos (CA11)**
 
 Os resultados detalhados estão disponíveis em:
 
@@ -165,7 +166,8 @@ verzel-store-qa-challenge/
 │   ├── cenarios-de-teste/
 │   ├── evidencias/
 │   ├── execucao/
-│   └── premissas-e-ambiguidades.md
+│   ├── premissas-e-ambiguidades.md
+│   └── teste-exploratorio.md
 ├── tests/
 │   └── cupom-frete.spec.js
 ├── .gitignore
