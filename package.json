@@ -1,0 +1,31 @@
+{
+  "name": "verzel-store-qa-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+  "test": "playwright test",
+  "test:headed": "playwright test --headed",
+  "test:report": "playwright show-report"
+}
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JaquelineSanches/verzel-store-qa-challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JaquelineSanches/verzel-store-qa-challenge/issues"
+  },
+  "homepage": "https://github.com/JaquelineSanches/verzel-store-qa-challenge#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.64.0"
+  }
+}
