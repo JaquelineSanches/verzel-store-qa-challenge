@@ -27,7 +27,7 @@ Foram validados cenários relacionados a:
 
 Os cenários foram escritos utilizando **Gherkin/BDD** e estão disponíveis em:
 
-`docs/cenarios-de-teste/cenarios-cupom-frete.feature`
+docs/cenarios-de-teste/cenarios-cupom-frete.feature
 
 Foram elaborados e executados **20 cenários de teste**.
 
@@ -43,7 +43,7 @@ Resultado da execução dos cenários de teste:
 
 Os resultados detalhados estão disponíveis em:
 
-`docs/execucao/resultado-execucao.md`
+docs/execucao/resultado-execucao.md
 
 ## 🐞 Bugs encontrados
 
@@ -59,7 +59,7 @@ A API permite quantidade superior ao limite máximo de 5 unidades por produto ta
 
 Os detalhes dos bugs estão disponíveis em:
 
-`docs/bugs/`
+docs/bugs/
 
 ## 📸 Evidências
 
@@ -67,7 +67,7 @@ As evidências das execuções foram registradas por meio de screenshots e grava
 
 Estão disponíveis em:
 
-`docs/evidencias/`
+docs/evidencias/
 
 ## ⚠️ Premissas e ambiguidades
 
@@ -75,7 +75,7 @@ Durante a análise da documentação foram identificados pontos que exigiram int
 
 As decisões adotadas estão documentadas em:
 
-`docs/premissas-e-ambiguidades.md`
+docs/premissas-e-ambiguidades.md
 
 ## 🤖 Automação de testes
 
@@ -91,7 +91,7 @@ Foram automatizados três cenários da funcionalidade de cupom e frete:
 
 Os testes estão disponíveis em:
 
-`tests/ui/cupom-frete.spec.js`
+tests/ui/cupom-frete.spec.js
 
 A automação de interface está configurada para execução nos navegadores:
 
@@ -113,9 +113,9 @@ A suíte possui **23 testes de API**, distribuídos entre:
 
 Os testes estão organizados em:
 
-`tests/api/produtos.spec.js`  
-`tests/api/carrinho.spec.js`  
-`tests/api/pedidos.spec.js`
+tests/api/produtos.spec.js  
+tests/api/carrinho.spec.js  
+tests/api/pedidos.spec.js
 
 Na execução atual da suíte:
 
