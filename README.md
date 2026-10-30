@@ -208,7 +208,7 @@ npx playwright test --project=api -g "nome do teste"
 
 > **Observação:** atualmente, a suíte de API possui 3 testes reprovados relacionados aos bugs conhecidos **BUG01** e **BUG02**. Essas falhas são mantidas intencionalmente para evidenciar comportamentos da aplicação que divergem dos requisitos especificados.
 
-## 🛠️ Tecnologias e ferramentas utilizadas e práticas utilizadas
+## 🛠️ Tecnologias, ferramentas e práticas utilizadas
 
 - Playwright
 - JavaScript
