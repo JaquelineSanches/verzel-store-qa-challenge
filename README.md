@@ -27,7 +27,7 @@ Foram validados cenários relacionados a:
 
 Os cenários foram escritos utilizando **Gherkin/BDD** e estão disponíveis em:
 
-[docs/execucao/resultado-execucao.md](docs/execucao/resultado-execucao.md)
+[docs/cenarios-de-teste/cenarios-cupom-frete.feature](docs/cenarios-de-teste/cenarios-cupom-frete.feature)
 
 Foram elaborados e executados **20 cenários de teste**.
 
