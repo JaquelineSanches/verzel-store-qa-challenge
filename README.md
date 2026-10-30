@@ -33,7 +33,7 @@ Foram elaborados e executados **20 cenários de teste**.
 
 ## 📊 Resultado da execução
 
-Resultado dos testes manuais e exploratórios:
+Resultado da execução dos cenários de teste:
 
 - **20 cenários executados**
 - **17 cenários aprovados (PASS)**
@@ -79,7 +79,11 @@ As decisões adotadas estão documentadas em:
 
 ## 🤖 Automação de testes
 
-Foram automatizados três cenários utilizando **Playwright com JavaScript**:
+A automação foi desenvolvida utilizando **Playwright com JavaScript**, contemplando testes de **interface (UI)** e **API**.
+
+### Testes de interface (UI)
+
+Foram automatizados três cenários da funcionalidade de cupom e frete:
 
 - **CT01** - Aplicar cupom BEMVINDO10 com sucesso
 - **CT16** - Calcular frete para subtotal abaixo do limite de frete grátis
@@ -87,15 +91,45 @@ Foram automatizados três cenários utilizando **Playwright com JavaScript**:
 
 Os testes estão disponíveis em:
 
-`tests/cupom-frete.spec.js`
+`tests/ui/cupom-frete.spec.js`
 
-A automação está configurada para execução nos navegadores:
+A automação de interface está configurada para execução nos navegadores:
 
 - Chromium
 - Firefox
 - WebKit
 
 Dessa forma, os 3 cenários automatizados resultam em **9 execuções cross-browser**.
+
+### Testes de API
+
+Também foi desenvolvida uma suíte de testes automatizados para validação da API da aplicação.
+
+A suíte possui **23 testes de API**, distribuídos entre:
+
+- **Produtos** - consulta, estrutura, campos obrigatórios e validação dos dados retornados;
+- **Carrinho** - cálculos de subtotal, desconto, frete, cupom, limites e regras de negócio;
+- **Pedidos** - criação de pedidos e validações de quantidade, itens, produtos e cupons.
+
+Os testes estão organizados em:
+
+`tests/api/produtos.spec.js`  
+`tests/api/carrinho.spec.js`  
+`tests/api/pedidos.spec.js`
+
+Na execução atual da suíte:
+
+- **23 testes executados**
+- **20 testes aprovados (PASS)**
+- **3 testes reprovados (FAIL)**
+- **2 bugs conhecidos relacionados às falhas**
+
+As falhas são mantidas intencionalmente na suíte para evidenciar comportamentos divergentes dos requisitos:
+
+- **BUG01** - cobrança de frete para subtotal exatamente igual a R$ 200,00;
+- **BUG02** - API aceita quantidade superior a 5 unidades por produto no cálculo do carrinho e na criação do pedido.
+
+O BUG02 é validado em dois endpoints diferentes e, por isso, corresponde a duas das três falhas da suíte.
 
 ## 🚀 Como executar os testes automatizados
 
@@ -134,19 +168,47 @@ npx playwright install
 
 ### Executar os testes
 
-Para executar todos os testes:
+#### Testes de interface (UI)
+
+Para executar os testes de interface nos navegadores configurados:
 
 ```bash
-npm test
+npx playwright test tests/ui
 ```
 
-Para executar visualizando os navegadores:
+Para executar os testes de interface visualizando os navegadores:
 
 ```bash
-npm run test:headed
+npx playwright test tests/ui --headed
 ```
 
-## 🛠️ Tecnologias e ferramentas utilizadas
+Os testes de UI estão configurados para execução em Chromium, Firefox e WebKit.
+
+#### Testes de API
+
+Para executar toda a suíte de testes de API:
+
+```bash
+npx playwright test --project=api
+```
+
+Para executar somente os testes de um arquivo específico:
+
+```bash
+npx playwright test tests/api/produtos.spec.js --project=api
+npx playwright test tests/api/carrinho.spec.js --project=api
+npx playwright test tests/api/pedidos.spec.js --project=api
+```
+
+Para executar somente um teste pelo nome:
+
+```bash
+npx playwright test --project=api -g "nome do teste"
+```
+
+> **Observação:** atualmente, a suíte de API possui 3 testes reprovados relacionados aos bugs conhecidos **BUG01** e **BUG02**. Essas falhas são mantidas intencionalmente para evidenciar comportamentos da aplicação que divergem dos requisitos especificados.
+
+## 🛠️ Tecnologias e ferramentas utilizadas e práticas utilizadas
 
 - Playwright
 - JavaScript
@@ -156,6 +218,8 @@ npm run test:headed
 - Git
 - GitHub
 - Visual Studio Code
+- Testes de API REST
+
 
 ## 📁 Estrutura do projeto
 
@@ -168,8 +232,16 @@ verzel-store-qa-challenge/
 │   ├── execucao/
 │   ├── premissas-e-ambiguidades.md
 │   └── teste-exploratorio.md
+│
 ├── tests/
-│   └── cupom-frete.spec.js
+│   ├── api/
+│   │   ├── produtos.spec.js
+│   │   ├── carrinho.spec.js
+│   │   └── pedidos.spec.js
+│   │
+│   └── ui/
+│       └── cupom-frete.spec.js
+│
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
@@ -181,4 +253,4 @@ verzel-store-qa-challenge/
 
 **Jaqueline Patricia Sanches**
 
-Projeto desenvolvido como parte do processo seletivo para QA da Verzel.
+Projeto iniciado como parte do processo seletivo para QA da Verzel e posteriormente expandido como projeto de estudo e portfólio, com evolução da cobertura de testes automatizados de interface e API.
