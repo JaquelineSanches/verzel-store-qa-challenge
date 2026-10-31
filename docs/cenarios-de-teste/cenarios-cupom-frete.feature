@@ -154,12 +154,13 @@ Cenário: CT15 - Manter frete grátis quando o subtotal fica abaixo de R$ 200,00
 
 @CA07
 Cenário: CT16 - Calcular frete para subtotal abaixo do limite de frete grátis
-  Dado que o cliente possui 4 unidades do "Boné Aba Curva" no carrinho
-  E o subtotal do carrinho é de R$ 199,60
-  Quando visualizar o resumo do pedido
-  Então deve ser cobrado o frete de R$ 19,90
-  E deve ser informado que faltam R$ 0,40 para obter frete grátis
-  E o total do pedido deve ser R$ 219,50
+Dado que o cliente possui 1 unidade do "Boné Aba Curva" no carrinho
+E possui 3 unidades da "Garrafa Térmica 750ml" no carrinho
+E o subtotal do carrinho é de R$ 199,90
+Quando visualizar o resumo do pedido
+Então deve ser cobrado o frete de R$ 19,90
+E deve ser informado que faltam R$ 0,10 para obter frete grátis
+E o total do pedido deve ser R$ 219,80
 
 @CA09
 Cenário: CT17 - Aplicar desconto somente sobre o subtotal dos produtos

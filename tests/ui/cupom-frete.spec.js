@@ -59,37 +59,38 @@ test('CT16 - Calcular frete para subtotal abaixo do limite de frete grátis', as
     .getByRole('button')
     .click();
 
-  
   await page
-    .getByRole('link', { name: 'Carrinho 1 itens no carrinho' })
+    .getByRole('article', { name: 'Garrafa Térmica 750ml'})  
+    .getByRole('button')
     .click();
 
   
-  const botaoMais = page.getByRole('button', { name: 'Aumentar quantidade de' });
+  await page
+    .getByRole('link', { name: 'Carrinho 2 itens no carrinho' })
+    .click();
+
+  
+  const botaoMais = page.getByRole('button', { name: 'Aumentar quantidade de Garrafa Térmica 750ml' });
 
   await botaoMais.click();
   await botaoMais.click();
-  await botaoMais.click();
+
+   
+const subtotal = page.locator('[data-valor="subtotal"]');
+await expect(subtotal).toHaveText('R$ 199,90');
 
   
-  await expect(
-  page.getByRole('definition').filter({ hasText: 'R$ 199,60' })
-).toBeVisible();
+const frete = page.locator('[data-valor="frete"]');
+await expect(frete).toHaveText('R$ 19,90');
 
+      
+const avisoFrete =  page.locator('.aviso-frete');
+await expect(avisoFrete).toHaveText(
+'Faltam R$ 0,10 para o frete grátis.'
+);
   
-  await expect(
-    page.getByText('R$ 19,90')
-  ).toBeVisible();
-
-  
-  await expect(
-    page.getByText('Faltam R$ 0,40 para o frete grátis.')
-  ).toBeVisible();
-
-  
-  await expect(
-    page.getByText('R$ 219,50')
-  ).toBeVisible();
+const total = page.locator('[data-valor="total"]');
+await expect(total).toHaveText('R$ 219,80');
 
 });
 

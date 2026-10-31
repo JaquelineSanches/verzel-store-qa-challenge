@@ -274,10 +274,10 @@ O sistema apresentou subtotal de R$ 209,60 e aplicou desconto de R$ 20,96. O val
 **Status:** ✅ PASS
 
 **Resultado esperado:**
-Com subtotal de R$ 199,60, o sistema deve cobrar frete de R$ 19,90, informar que faltam R$ 0,40 para obter frete grátis e apresentar o total do pedido de R$ 219,50.
+Com subtotal de R$ 199,90, o sistema deve cobrar frete de R$ 19,90, informar que faltam R$ 0,10 para obter frete grátis e apresentar o total do pedido de R$ 219,80.
 
 **Resultado obtido:**
-O sistema apresentou subtotal de R$ 199,60, cobrou frete de R$ 19,90, informou que faltam R$ 0,40 para o frete grátis e apresentou o total de R$ 219,50, conforme esperado.
+O sistema apresentou subtotal de R$ 199,90, cobrou frete de R$ 19,90, informou que faltam R$ 0,10 para o frete grátis e apresentou o total de R$ 219,80, conforme esperado.
 
 **Evidência:**
 - [Frete calculado para subtotal abaixo de R$ 200,00](../evidencias/CT16-frete-subtotal-abaixo-200.png)
