@@ -19,7 +19,24 @@ Na interface, o sistema exibe e adiciona ao total o valor de R$ 19,90 referente 
 
 Também é exibida a mensagem "Faltam R$ 0,00 para o frete grátis."
 
-Ao reproduzir a mesma condição diretamente no endpoint `POST /api/carrinho/calcular`, a API retornou:
+### Reprodução via API
+
+**Endpoint:** `POST /api/carrinho/calcular`
+
+**Corpo da requisição:**
+
+```json
+{
+  "itens": [
+    {
+      "produtoId": "P005",
+      "quantidade": 2
+    }
+  ]
+}
+```
+
+**Resposta obtida:**
 
 - `subtotal`: 200;
 - `frete`: 19.9;
@@ -40,5 +57,8 @@ O comportamento demonstra que a regra de frete grátis para subtotal maior ou ig
 ![API19 - Frete cobrado para subtotal de R$ 200,00](../evidencias/API19-frete-cobrado-subtotal-200.png)
 
 ## Severidade
+Alta
+
+## Prioridade sugerida
 Alta
 

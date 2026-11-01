@@ -5,13 +5,12 @@
 ## Pré-condição
 Utilizar um produto válido existente no catálogo e, para a criação do pedido, informar dados válidos do cliente.
 
-## Passos para reproduzir
+## Passos para reprodução
 
-1. Enviar uma requisição POST para `/api/carrinho/calcular`.
-2. Informar um produto válido, por exemplo `"produtoId": "P001"`.
-3. Informar `"quantidade": 6`.
-4. Enviar a requisição.
-5. Repetir o teste no endpoint POST `/api/pedidos`, informando os dados válidos do cliente e `"quantidade": 6`.
+1. Enviar uma requisição POST para `/api/carrinho/calcular` com quantidade superior a 5 unidades do mesmo produto.
+2. Observar a resposta da API.
+3. Repetir o teste no endpoint POST `/api/pedidos`, utilizando dados válidos do cliente e quantidade superior a 5 unidades do mesmo produto.
+4. Observar a resposta da API.
 
 ## Resultado esperado
 
@@ -23,11 +22,78 @@ O endpoint `/api/carrinho/calcular` aceitou a quantidade de 6 unidades e retorno
 
 O endpoint `/api/pedidos` também aceitou a quantidade de 6 unidades e retornou HTTP 201, criando o pedido normalmente.
 
+### Reprodução via API
+
+#### Carrinho
+
+**Endpoint:** `POST /api/carrinho/calcular`
+
+**Corpo da requisição:**
+
+```json
+{
+  "itens": [
+    {
+      "produtoId": "P001",
+      "quantidade": 6
+    }
+  ]
+}
+```
+
+**Resposta obtida:**
+
+- HTTP 200;
+- a quantidade de 6 unidades foi aceita;
+- o cálculo do carrinho foi realizado normalmente.
+
+O comportamento demonstra que a regra de quantidade máxima de 5 unidades por produto não está sendo aplicada corretamente no cálculo do carrinho.
+
+#### Pedido
+
+**Endpoint:** `POST /api/pedidos`
+
+**Corpo da requisição:**
+
+```json
+{
+  "cliente": {
+    "nome": "Maria Silva",
+    "email": "maria@exemplo.com",
+    "cep": "01310-100"
+  },
+  "itens": [
+    {
+      "produtoId": "P005",
+      "quantidade": 6
+    }
+  ],
+  "cupom": "BEMVINDO10"
+}
+```
+
+**Resposta obtida:**
+
+- HTTP 201;
+- a quantidade de 6 unidades foi aceita;
+- o pedido foi criado normalmente.
+
+O comportamento demonstra que a regra de quantidade máxima de 5 unidades por produto também não está sendo aplicada corretamente na criação do pedido.
+
 ## Evidências
 
-- `../evidencias/BUG02-api-aceita-quantidade-maior-que-5.png`
-- `../evidencias/BUG02-api-pedido-criado-quantidade-maior-que-5.png`
+### Carrinho
+
+![BUG02 - API aceita quantidade maior que 5](../evidencias/BUG02-api-aceita-quantidade-maior-que-5.png)
+
+### Pedido
+
+![BUG02 - API cria pedido com quantidade maior que 5](../evidencias/BUG02-api-pedido-criado-quantidade-maior-que-5.png)
 
 ## Severidade
+
+Alta
+
+## Prioridade sugerida
 
 Alta

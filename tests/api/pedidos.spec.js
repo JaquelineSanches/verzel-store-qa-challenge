@@ -8,7 +8,7 @@ const payload = {
 
         cliente: {
             
-                nome:'Maria Sila',
+                nome:'Maria Silva',
                 email:'maria@exemplo.com',
                 cep:'01310-100'
             },
