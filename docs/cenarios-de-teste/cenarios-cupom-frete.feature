@@ -197,3 +197,121 @@ Cenário: CT20 - Rejeitar criação de pedido com quantidade maior que 5 unidade
   Quando solicitar a criação do pedido
   Então a API deve retornar o status HTTP 422
   E o código de erro deve ser "QUANTIDADE_MAXIMA_EXCEDIDA"
+
+
+  Cenário: CT21 - Finalizar pedido com dados válidos no checkout
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando preencher o nome completo com "Maria Silva"
+  E preencher o e-mail com "maria@exemplo.com"
+  E preencher o CEP com "01310-100"
+  E clicar em "Confirmar pedido"
+  Então deve ser exibida a mensagem "Pedido confirmado"
+  E deve ser exibido o número do pedido gerado
+
+
+  Cenário: CT22 - Finalizar pedido com nome incompleto no checkout
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria" no campo "Nome completo"
+  E informa "maria@exemplo.com" no campo "E-mail"
+  E informa "01310-100" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Informe nome e sobrenome." no campo "Nome completo"
+  E o pedido não deve ser finalizado
+
+
+  Cenário: CT23 - Finalizar pedido com E-mail inválido
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria Silva" no campo "Nome Completo"
+  E informa "maria@com" no campo "E-mail"
+  E informa "01310-100" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Informe um e-mail válido." no campo "E-mail"
+  E o pedido não deve ser finalizado
+
+
+  Cenário: CT24 - Finalizar pedido com CEP válido contendo hífen 
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria Silva" no campo "Nome Completo"
+  E informa "maria@exemplo.com" no campo "E-mail"
+  E informa "01310-100" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Pedido confirmado"
+  E deve ser exibido o número do pedido gerado
+
+
+  Cenário: CT25 - Finalizar pedido com CEP válido sem hífen 
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria Silva" no campo "Nome Completo"
+  E informa "maria@exemplo.com" no campo "E-mail"
+  E informa "01310100" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Pedido confirmado"
+  E deve ser exibido o número do pedido gerado
+
+
+  Cenário: CT26 - Finalizar pedido com CEP de 7 dígitos 
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria Silva" no campo "Nome Completo"
+  E informa "maria@exemplo.com" no campo "E-mail"
+  E informa "0131010" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Informe um CEP com 8 dígitos." no campo "CEP"
+  E o pedido não deve ser finalizado
+
+
+  Cenário: CT27 - Finalizar pedido com CEP de 9 dígitos
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando informa "Maria Silva" no campo "Nome Completo"
+  E informa "maria@exemplo.com" no campo "E-mail"
+  E informa "013101009" no campo "CEP"
+  E confirma o pedido
+  Então deve ser exibida a mensagem "Informe um CEP com 8 dígitos." no campo "CEP"
+  E o pedido não deve ser finalizado
+
+
+  Cenário: CT28 - Manter os valores do carrinho no resumo do checkout
+  Dado que o cliente possui 1 unidade de "Tênis Casual Urbano" no carrinho
+  E o subtotal do carrinho é de R$ 189,90
+  E o desconto é de R$ 0,00
+  E o frete é de R$ 19,90
+  E o total do pedido é de R$ 209,80
+  Quando acessa a tela de finalização da compra
+  Então o subtotal exibido no resumo deve ser R$ 189,90
+  E o desconto exibido deve ser R$ 0,00
+  E o frete exibido deve ser R$ 19,90
+  E o total exibido deve ser R$ 209,80
+  E deve ser exibido 1 "Tênis Casual Urbano" no resumo do pedido
+
+
+  Cenário: CT29 - Retornar do checkout para o carrinho
+  Dado que o cliente possui produtos no carrinho
+  E acessa a tela de finalização da compra
+  Quando seleciona a opção "Voltar ao carrinho"
+  Então deve ser redirecionado para a tela do carrinho
+  E os produtos adicionados anteriormente devem permanecer no carrinho
+  E as respectivas quantidades devem ser mantidas
+  
+
+  Cenário: CT30 - Esvaziar todos os produtos do carrinho
+  Dado que o cliente possui produtos no carrinho
+  Quando seleciona a opção "Esvaziar carrinho"
+  Então todos os produtos devem ser removidos do carrinho
+  E deve ser exibida a mensagem "Seu carrinho está vazio"
+  E o contador do carrinho deve exibir 0
+  
+
+
+
+
+
+
+  
+
+

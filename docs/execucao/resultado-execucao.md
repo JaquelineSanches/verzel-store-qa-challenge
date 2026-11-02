@@ -361,3 +361,142 @@ O critério determina que todos os valores sejam arredondados para duas casas de
 Dessa forma, não foi possível provocar uma situação em que o sistema precisasse realizar efetivamente um arredondamento a partir de uma terceira casa decimal.
 
 A limitação e a interpretação adotada para o critério estão documentadas em `premissas-e-ambiguidades.md`, na seção **AMB02 - Lacunas na especificação da regra de arredondamento**.
+
+## CT21 - Finalizar pedido com dados válidos no checkout
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao preencher os campos Nome completo, E-mail e CEP com dados válidos e confirmar o pedido, o sistema deve finalizar a compra, exibir a mensagem "Pedido confirmado" e apresentar o número do pedido gerado.
+
+**Resultado obtido:**  
+O pedido foi finalizado com sucesso. O sistema exibiu a mensagem "Pedido confirmado" e apresentou o número do pedido gerado, conforme esperado.
+
+**Evidência:**  
+- [Pedido confirmado com dados válidos](../evidencias/CT21-pedido-confirmado-dados-validos.png)
+
+
+## CT22 - Finalizar pedido com nome incompleto no checkout
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar apenas o primeiro nome no campo "Nome completo" e manter os demais dados válidos, o sistema deve exibir a mensagem "Informe nome e sobrenome." e impedir a finalização do pedido.
+
+**Resultado obtido:**  
+O sistema exibiu a mensagem "Informe nome e sobrenome." no campo "Nome completo" e o pedido não foi finalizado, conforme esperado.
+
+**Evidência:**  
+- [Validação de nome incompleto no checkout](../evidencias/CT22-nome-incompleto-checkout.png)
+
+## CT23 - Finalizar pedido com e-mail inválido no checkout
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar um e-mail em formato inválido no campo "E-mail" e manter os demais dados válidos, o sistema deve exibir a mensagem "Informe um e-mail válido." e impedir a finalização do pedido.
+
+**Resultado obtido:**  
+O sistema exibiu a mensagem "Informe um e-mail válido." no campo "E-mail" e o pedido não foi finalizado, conforme esperado.
+
+**Evidência:**  
+- [Validação de e-mail inválido no checkout](../evidencias/CT23-email-invalido-checkout.png)
+
+
+## CT24 - Finalizar pedido com CEP válido contendo hífen
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar o CEP "01310-100", contendo 8 dígitos e hífen, juntamente com os demais dados válidos, o sistema deve aceitar o CEP, finalizar o pedido e exibir a mensagem "Pedido confirmado" com o número do pedido gerado.
+
+**Resultado obtido:**  
+O sistema aceitou o CEP "01310-100", finalizou o pedido e exibiu a mensagem "Pedido confirmado" com o número do pedido gerado, conforme esperado.
+
+**Evidência:**  
+- [CEP válido com hífen](../evidencias/CT24-cep-valido-com-hifen.png)
+
+
+## CT25 - Finalizar pedido com CEP válido sem hífen
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar o CEP "01310100", contendo 8 dígitos e sem hífen, juntamente com os demais dados válidos, o sistema deve aceitar o CEP, finalizar o pedido e exibir a mensagem "Pedido confirmado" com o número do pedido gerado.
+
+**Resultado obtido:**  
+O sistema aceitou o CEP "01310100", finalizou o pedido e exibiu a mensagem "Pedido confirmado" com o número do pedido gerado, conforme esperado.
+
+**Evidência:**  
+- [CEP válido sem hífen](../evidencias/CT25-cep-valido-sem-hifen.png)
+
+
+## CT26 - Finalizar pedido com CEP de 7 dígitos
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar um CEP com apenas 7 dígitos e manter os demais dados válidos, o sistema deve exibir a mensagem "Informe um CEP com 8 dígitos." e impedir a finalização do pedido.
+
+**Resultado obtido:**  
+O sistema exibiu a mensagem "Informe um CEP com 8 dígitos." no campo "CEP" e o pedido não foi finalizado, conforme esperado.
+
+**Evidência:**  
+- [CEP inválido com 7 dígitos](../evidencias/CT26-cep-invalido-7-digitos.png)
+
+
+## CT27 - Finalizar pedido com CEP de 9 dígitos
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao informar um CEP com 9 dígitos e manter os demais dados válidos, o sistema deve exibir a mensagem "Informe um CEP com 8 dígitos." e impedir a finalização do pedido.
+
+**Resultado obtido:**  
+O sistema exibiu a mensagem "Informe um CEP com 8 dígitos." no campo "CEP" e o pedido não foi finalizado, conforme esperado.
+
+**Evidência:**  
+- [CEP inválido com 9 dígitos](../evidencias/CT27-cep-invalido-9-digitos.png)
+
+
+## CT28 - Manter os valores do carrinho no resumo do checkout
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao acessar a tela de finalização da compra, os produtos e valores apresentados no resumo do pedido devem corresponder aos valores calculados no carrinho: subtotal de R$ 189,90, desconto de R$ 0,00, frete de R$ 19,90 e total de R$ 209,80.
+
+**Resultado obtido:**  
+O resumo do checkout apresentou corretamente 1 unidade do "Tênis Casual Urbano", subtotal de R$ 189,90, desconto de R$ 0,00, frete de R$ 19,90 e total de R$ 209,80, mantendo os valores do carrinho.
+
+**Evidência:**  
+- [Valores do resumo do pedido no checkout](../evidencias/CT28-resumo-valores-checkout.png)
+
+
+## CT29 - Retornar do checkout para o carrinho
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao selecionar a opção "Voltar ao carrinho" na tela de checkout, o sistema deve retornar para a tela do carrinho, mantendo os produtos adicionados anteriormente e suas respectivas quantidades.
+
+**Resultado obtido:**  
+O sistema retornou para a tela do carrinho e manteve os produtos e suas respectivas quantidades, conforme esperado.
+
+**Evidência:**  
+- [Retorno ao carrinho com itens preservados](../evidencias/CT29-retorno-carrinho-itens-preservados.mp4)
+
+
+## CT30 - Esvaziar todos os produtos do carrinho
+
+**Status:** 🟢 PASS
+
+**Resultado esperado:**  
+Ao selecionar a opção "Esvaziar carrinho", todos os produtos devem ser removidos, a mensagem "Seu carrinho está vazio" deve ser exibida e o contador do carrinho deve apresentar 0.
+
+**Resultado obtido:**  
+Todos os produtos foram removidos do carrinho. O sistema exibiu a mensagem "Seu carrinho está vazio" e o contador do carrinho foi atualizado para 0, conforme esperado.
+
+**Evidência:**  
+- [Esvaziar todos os produtos do carrinho](../evidencias/CT30-esvaziar-carrinho.mp4)
+

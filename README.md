@@ -21,7 +21,13 @@ Foram validados cenários relacionados a:
 - cálculo do valor restante para frete grátis;
 - limite máximo de unidades por produto;
 - validações pela interface e pela API;
+- validações dos dados do cliente no checkout;
+- validação dos formatos aceitos para CEP;
+- consistência dos produtos e valores entre carrinho e checkout;
+- navegação entre checkout e carrinho;
+- esvaziamento do carrinho;
 - análise da regra de arredondamento, considerando as limitações dos dados fornecidos.
+
 
 ## 🧪 Cenários de teste
 
@@ -29,14 +35,14 @@ Os cenários foram escritos utilizando **Gherkin/BDD** e estão disponíveis em:
 
 [docs/cenarios-de-teste/cenarios-cupom-frete.feature](docs/cenarios-de-teste/cenarios-cupom-frete.feature)
 
-Foram elaborados e executados **20 cenários de teste**.
+Foram elaborados e executados **30 cenários de teste**.
 
 ## 📊 Resultado da execução
 
 Resultado da execução dos cenários de teste:
 
-- **20 cenários executados**
-- **17 cenários aprovados (PASS)**
+- **30 cenários executados**
+- **27 cenários aprovados (PASS)**
 - **3 cenários reprovados (FAIL)**
 - **2 bugs identificados**
 - **1 critério não testável com os dados fornecidos (CA11)**
